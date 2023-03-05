@@ -58,7 +58,9 @@ namespace Modsen.DL.Migrations
                     Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Description = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Speaker = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    TimeAndPlace = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                    Organizer = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Place = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Time = table.Column<DateTime>(type: "datetime2", nullable: false)
                 },
                 constraints: table =>
                 {

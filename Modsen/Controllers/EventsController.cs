@@ -16,6 +16,9 @@ namespace Modsen.Controllers
             _eventService = eventService;
         }
 
+        /// <summary>
+        /// Get all existing events
+        /// </summary>
         [HttpGet]
         [Authorize]
         public async Task<IActionResult> Get()
@@ -30,6 +33,9 @@ namespace Modsen.Controllers
             }
         }
 
+        /// <summary>
+        /// Get event by ID
+        /// </summary>
         [HttpGet("{id}")]
         [Authorize]
         public async Task<IActionResult> Get(Guid id)
@@ -44,9 +50,12 @@ namespace Modsen.Controllers
             }
         }
 
+        /// <summary>
+        /// Create new event
+        /// </summary>
         [HttpPost]
         [Authorize]
-        public async Task<IActionResult> Post(EventDTO eventDTO)
+        public async Task<IActionResult> Post(EventDto eventDTO)
         {
             try
             {
@@ -58,9 +67,12 @@ namespace Modsen.Controllers
             }
         }
 
+        /// <summary>
+        /// Update event information
+        /// </summary>
         [HttpPut]
         [Authorize]
-        public async Task<IActionResult> Put(EventDTO eventDTO)
+        public async Task<IActionResult> Put(EventDto eventDTO)
         {
             try
             {
@@ -73,6 +85,9 @@ namespace Modsen.Controllers
 
         }
 
+        /// <summary>
+        /// Delete event
+        /// </summary>
         [HttpDelete("{id}")]
         [Authorize]
         public async Task<IActionResult> Delete(Guid id)

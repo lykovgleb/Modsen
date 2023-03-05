@@ -15,6 +15,12 @@ namespace Modsen.Controllers
             _authService = authService;
         }
 
+        /// <summary>
+        /// Login and get token
+        /// </summary>
+        /// <remarks>
+        /// Use your username and password. Then in the token input field enter "Bearer *YourToken*"
+        /// </remarks>
         [HttpPost]
         [Route("login")]
         public async Task<IActionResult> LoginAsync([FromBody] LoginModel model)
@@ -29,6 +35,12 @@ namespace Modsen.Controllers
             }
         }
 
+        /// <summary>
+        /// Register new user
+        /// </summary>
+        /// <remarks>
+        /// Passwords must have at least one non alphanumeric character, at least one digit ('0'-'9'), at least one uppercase ('A'-'Z')
+        /// </remarks>
         [HttpPost]
         [Route("register")]
         public async Task<IActionResult> RegisterAsync([FromBody] RegisterModel model)

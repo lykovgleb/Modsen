@@ -7,6 +7,7 @@ using Modsen.BL.Interfaces;
 using Modsen.BL.Mapper;
 using Modsen.BL.Services;
 using Modsen.DL;
+using System.Reflection;
 using System.Text;
 
 internal class Program
@@ -22,7 +23,7 @@ internal class Program
         builder.Services.AddDbContext<EventContext>(options => options.UseSqlServer(
             builder.Configuration.GetConnectionString("DefaultConnection")));
 
-        builder.Services.AddScoped<IEventService, EventServise>();
+        builder.Services.AddScoped<IEventService, EventServiñe>();
         builder.Services.AddScoped<IAuthService, AuthService>();
 
         builder.Services.AddIdentity<IdentityUser, IdentityRole>()
@@ -67,7 +68,7 @@ internal class Program
                 BearerFormat = "JWT",
                 In = ParameterLocation.Header,
                 Description =
-                    "Enter 'Bearer' [space] and then your valid token in the text input below.\r\n\r\nExample: \"Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9\"",
+                    "Enter 'Bearer' [space] and then your valid token in the text input below.\r\n\r\nExample: \"Bearer *YourToken*\"",
             });
             swagger.AddSecurityRequirement(new OpenApiSecurityRequirement
             {{
@@ -81,6 +82,8 @@ internal class Program
             },
             new string[] { }
             }});
+            var xmlFilename = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
+            swagger.IncludeXmlComments(Path.Combine(AppContext.BaseDirectory, xmlFilename));
         });
 
         var app = builder.Build();

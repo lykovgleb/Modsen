@@ -12,7 +12,7 @@ using Modsen.DL;
 namespace Modsen.DL.Migrations
 {
     [DbContext(typeof(EventContext))]
-    [Migration("20230305125854_InitialCreate")]
+    [Migration("20230305142256_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />
@@ -237,13 +237,20 @@ namespace Modsen.DL.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("Organizer")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Place")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("Speaker")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("TimeAndPlace")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<DateTime>("Time")
+                        .HasColumnType("datetime2");
 
                     b.HasKey("Id");
 

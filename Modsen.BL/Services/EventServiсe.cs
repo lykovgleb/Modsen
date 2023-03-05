@@ -7,23 +7,23 @@ using Modsen.DL.Entities;
 
 namespace Modsen.BL.Services
 {
-    public class EventServise : IEventService
+    public class EventServiсe : IEventService
     {
         private readonly EventContext _db;
         private readonly IMapper _mapper;
 
-        public EventServise(EventContext db, IMapper mapper)
+        public EventServiсe(EventContext db, IMapper mapper)
         {
             _db = db;
             _mapper = mapper;
         }
 
-        public async Task<EventDTO> AddEventAsync(EventDTO eventDTO)
+        public async Task<EventDto> AddEventAsync(EventDto eventDTO)
         {
             var newEvent = _mapper.Map<Event>(eventDTO);
             await _db.Events.AddAsync(newEvent);
             await _db.SaveChangesAsync();
-            return _mapper.Map<EventDTO>(newEvent);
+            return _mapper.Map<EventDto>(newEvent);
         }
 
         public async Task DeleteEventAsync(Guid id)
@@ -33,30 +33,27 @@ namespace Modsen.BL.Services
             await _db.SaveChangesAsync();
         }
 
-        public async Task<EventDTO> GetEventByIdAsync(Guid id)
+        public async Task<EventDto> GetEventByIdAsync(Guid id)
         {
             var requiredEvent = await GetEventIfExistAsync(id);
-            return _mapper.Map<EventDTO>(requiredEvent);
+            return _mapper.Map<EventDto>(requiredEvent);
         }
 
-        public async Task<List<EventDTO>> GetAllEventsAsync()
+        public async Task<List<EventDto>> GetAllEventsAsync()
         {
             var events = await _db.Events.ToListAsync();
-            return _mapper.Map<List<EventDTO>>(events);
+            return _mapper.Map<List<EventDto>>(events);
         }
 
-        public async Task<EventDTO> UpdateEventAsync(EventDTO eventDTO)
+        public async Task<EventDto> UpdateEventAsync(EventDto eventDTO)
         {
             var oldEvent = await GetEventIfExistAsync(eventDTO.Id);
             var newEvent = _mapper.Map<Event>(eventDTO);
 
-            if (oldEvent.Name != newEvent.Name) oldEvent.Name = newEvent.Name;
-            if (oldEvent.Description != newEvent.Description) oldEvent.Description = newEvent.Description;
-            if (oldEvent.Speaker != newEvent.Speaker) oldEvent.Speaker = newEvent.Speaker;
-            if (oldEvent.TimeAndPlace != newEvent.TimeAndPlace) oldEvent.TimeAndPlace = newEvent.TimeAndPlace;
+            UpdateEvent(oldEvent, newEvent);
 
             await _db.SaveChangesAsync();
-            return _mapper.Map<EventDTO>(oldEvent);
+            return _mapper.Map<EventDto>(oldEvent);
         }
 
         private async Task<Event> GetEventIfExistAsync(Guid id)
@@ -65,6 +62,16 @@ namespace Modsen.BL.Services
             if (requiredEvent == null)
                 throw new Exception("The Event has not been found");
             return requiredEvent;
+        }
+
+        private void UpdateEvent(Event oldEvent, Event newEvent)
+        {
+            oldEvent.Name = newEvent.Name;
+            oldEvent.Description = newEvent.Description;
+            oldEvent.Speaker = newEvent.Speaker;
+            oldEvent.Organizer = newEvent.Organizer;
+            oldEvent.Place = newEvent.Place;
+            oldEvent.Time = newEvent.Time;
         }
     }
 }

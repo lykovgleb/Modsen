@@ -8,8 +8,8 @@ namespace Modsen.BL.Mapper
     {
         public EventProfile()
         {
-            CreateMap<Event, EventDTO>();
-            CreateMap<EventDTO, Event>();
+            CreateMap<Event, EventDto>();
+            CreateMap<EventDto, Event>();
         }
     }
 }
