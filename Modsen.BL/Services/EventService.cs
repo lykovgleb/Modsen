@@ -7,12 +7,12 @@ using Modsen.DL.Entities;
 
 namespace Modsen.BL.Services
 {
-    public class EventServiсe : IEventService
+    public class EventService : IEventService
     {
         private readonly EventContext _db;
         private readonly IMapper _mapper;
 
-        public EventServiсe(EventContext db, IMapper mapper)
+        public EventService(EventContext db, IMapper mapper)
         {
             _db = db;
             _mapper = mapper;

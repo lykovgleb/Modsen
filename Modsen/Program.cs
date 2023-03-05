@@ -23,7 +23,7 @@ internal class Program
         builder.Services.AddDbContext<EventContext>(options => options.UseSqlServer(
             builder.Configuration.GetConnectionString("DefaultConnection")));
 
-        builder.Services.AddScoped<IEventService, EventServiñe>();
+        builder.Services.AddScoped<IEventService, EventService>();
         builder.Services.AddScoped<IAuthService, AuthService>();
 
         builder.Services.AddIdentity<IdentityUser, IdentityRole>()
