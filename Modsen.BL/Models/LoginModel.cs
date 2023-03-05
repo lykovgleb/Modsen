@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace Modsen.Business.Models
+namespace Modsen.BL.Models
 {
     public class LoginModel
     {

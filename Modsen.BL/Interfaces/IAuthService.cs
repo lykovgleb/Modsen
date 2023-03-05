@@ -1,6 +1,6 @@
-﻿using Modsen.Business.Models;
+﻿using Modsen.BL.Models;
 
-namespace Modsen.Business.Interfaces
+namespace Modsen.BL.Interfaces
 {
     public interface IAuthService
     {

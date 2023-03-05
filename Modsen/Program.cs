@@ -3,11 +3,10 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
-using Modsen.Business.Interfaces;
-using Modsen.Business.Mapper;
-using Modsen.Business.Services;
-using Modsen.Data;
-using System.Reflection;
+using Modsen.BL.Interfaces;
+using Modsen.BL.Mapper;
+using Modsen.BL.Services;
+using Modsen.DL;
 using System.Text;
 
 internal class Program
@@ -51,10 +50,9 @@ internal class Program
             });
 
         builder.Services.AddAutoMapper(typeof(EventProfile));
-        //builder.Services.AddSwaggerGen();
+
         builder.Services.AddSwaggerGen(swagger =>
-        {
-            //This is to generate the Default UI of Swagger Documentation    
+        {   
             swagger.SwaggerDoc("v1", new OpenApiInfo
             {
                 Version = "v1",
@@ -83,8 +81,6 @@ internal class Program
             },
             new string[] { }
             }});
-            //var xmlFilename = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
-            //swagger.IncludeXmlComments(Path.Combine(AppContext.BaseDirectory, xmlFilename));
         });
 
         var app = builder.Build();

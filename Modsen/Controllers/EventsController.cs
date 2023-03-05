@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Modsen.Business.Interfaces;
-using Modsen.Business.Models;
+using Modsen.BL.Interfaces;
+using Modsen.BL.Models;
 
 namespace Modsen.Controllers
 {

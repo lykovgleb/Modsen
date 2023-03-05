@@ -1,8 +1,8 @@
 ﻿using AutoMapper;
-using Modsen.Business.Models;
-using Modsen.Data.Entities;
+using Modsen.BL.Models;
+using Modsen.DL.Entities;
 
-namespace Modsen.Business.Mapper
+namespace Modsen.BL.Mapper
 {
     public class EventProfile : Profile
     {

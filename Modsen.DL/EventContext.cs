@@ -1,9 +1,9 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
-using Modsen.Data.Entities;
+using Modsen.DL.Entities;
 
-namespace Modsen.Data
+namespace Modsen.DL
 {
     public class EventContext : IdentityDbContext<IdentityUser>
     {
@@ -12,7 +12,7 @@ namespace Modsen.Data
         public EventContext(DbContextOptions<EventContext> options)
         : base(options)
         {
-            Database.EnsureCreated();
+            
         }
     }
 }

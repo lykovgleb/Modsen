@@ -1,7 +1,6 @@
-﻿using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Mvc;
-using Modsen.Business.Interfaces;
-using Modsen.Business.Models;
+﻿using Microsoft.AspNetCore.Mvc;
+using Modsen.BL.Interfaces;
+using Modsen.BL.Models;
 
 namespace Modsen.Controllers
 {
@@ -9,12 +8,10 @@ namespace Modsen.Controllers
     [ApiController]
     public class AuthController : ControllerBase
     {
-        private readonly UserManager<IdentityUser> _userManager;
         private readonly IAuthService _authService;
 
-        public AuthController(UserManager<IdentityUser> userManager, IAuthService authService)
+        public AuthController(IAuthService authService)
         {
-            _userManager = userManager;
             _authService = authService;
         }
 

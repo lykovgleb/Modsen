@@ -1,13 +1,13 @@
-﻿using Azure.Core;
-using Microsoft.AspNetCore.Identity;
+﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
-using Modsen.Business.Interfaces;
-using Modsen.Business.Models;
+using Modsen.BL.Interfaces;
+using Modsen.BL.Models;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
 
-namespace Modsen.Business.Services
+namespace Modsen.BL.Services
 {
     public class AuthService : IAuthService
     {
@@ -26,7 +26,7 @@ namespace Modsen.Business.Services
 
             if (user != null && await _userManager.CheckPasswordAsync(user, loginModel.Password))
             {
-                return await GetToken(user);
+                return GetToken(user);
             }
             else
             {
@@ -73,7 +73,7 @@ namespace Modsen.Business.Services
             };
         }
 
-        private async Task<LoginResponse> GetToken(IdentityUser user)
+        private LoginResponse GetToken(IdentityUser user)
         {
             var authClaims = new List<Claim>
             {

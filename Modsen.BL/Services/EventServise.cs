@@ -1,11 +1,11 @@
 ﻿using AutoMapper;
 using Microsoft.EntityFrameworkCore;
-using Modsen.Business.Interfaces;
-using Modsen.Business.Models;
-using Modsen.Data;
-using Modsen.Data.Entities;
+using Modsen.BL.Interfaces;
+using Modsen.BL.Models;
+using Modsen.DL;
+using Modsen.DL.Entities;
 
-namespace Modsen.Business.Services
+namespace Modsen.BL.Services
 {
     public class EventServise : IEventService
     {

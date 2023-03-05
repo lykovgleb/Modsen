@@ -1,4 +1,4 @@
-﻿namespace Modsen.Data.Entities
+﻿namespace Modsen.DL.Entities
 {
     public class Event
     {
